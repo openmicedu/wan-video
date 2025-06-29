@@ -124,11 +124,11 @@ async def async_generator_handler(job):
         if resolution == "720p":
             size_key = "1280*720"
             max_area = MAX_AREA_CONFIGS[size_key]  # Use exact config
-            shift = 5.0
+            shift = 8.0
         elif resolution == "480p":
             size_key = "832*480"
             max_area = MAX_AREA_CONFIGS[size_key]  # Use exact config
-            shift = 3.0
+            shift = 8.0
         else:
             yield {
                 "error": f"Unsupported resolution: {resolution}. Use '720p' or '480p'",
@@ -178,7 +178,7 @@ async def async_generator_handler(job):
             guide_scale=5.0,           # EXACT default
             n_prompt=negative if negative else cfg.sample_neg_prompt,
             seed=seed if seed >= 0 else -1,        # EXACT logic from generate.py
-            offload_model=True         # EXACT from generate.py
+            offload_model=False         # EXACT from generate.py
         )
         
         # Step 4: Save video
@@ -198,7 +198,7 @@ async def async_generator_handler(job):
         cache_video(
             tensor=video[None],        # EXACT format
             save_file=output_path,
-            fps=cfg.sample_fps,        # Use config fps (16 from gradio examples)
+            fps=18,        # Use config fps (16 from gradio examples)
             nrow=1,
             normalize=True,
             value_range=(-1, 1)
