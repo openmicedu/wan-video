@@ -120,7 +120,7 @@ WORKDIR /workspace
 
 COPY requirements.txt . 
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install runpod
+RUN pip install runpod==1.7.9
 
 WORKDIR /runpod-volume/Wan2.1
 
