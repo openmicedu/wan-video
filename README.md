@@ -110,7 +110,7 @@ You just pick the requirements.tx file from the Wan2.1 repository.
 mkdir docker-build && cd docker-build
 
 # Copy requirements
-cp ../requirements.txt .
+cp ../Wan2.1/requirements.txt .
 
 # Create Dockerfile
 cat > Dockerfile << 'EOF'
